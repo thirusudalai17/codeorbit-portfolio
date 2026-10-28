@@ -1,694 +1,738 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Sudalai - Full Stack Developer Portfolio" />
-  <title>Sudalai | Full Stack Developer</title>
-
-  <!-- Devicon provides professional technology logos -->
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-
-  <style>
-    :root {
-      --bg: #07111f;
-      --bg-soft: #0d1b2e;
-      --card: rgba(18, 35, 56, 0.78);
-      --text: #f4f7fb;
-      --muted: #a9b7c8;
-      --primary: #42a5ff;
-      --secondary: #7c5cff;
-      --border: rgba(255,255,255,.10);
-      --shadow: 0 20px 60px rgba(0,0,0,.25);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 15% 15%, rgba(66,165,255,.16), transparent 30%),
-        radial-gradient(circle at 85% 10%, rgba(124,92,255,.16), transparent 28%),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(1120px, 92%); margin: auto; }
-
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      backdrop-filter: blur(14px);
-      background: rgba(7,17,31,.75);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      height: 72px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: .5px;
-    }
-
-    .logo span { color: var(--primary); }
-
-    .nav-links {
-      display: flex;
-      gap: 26px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-size: .95rem;
-      transition: .25s;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 120px 0 70px;
-    }
-
-
-    .hero-layout {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 55px;
-      width: 100%;
-    }
-
-    .profile-photo {
-      width: 270px;
-      height: 270px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 5px solid rgba(255,255,255,.9);
-      box-shadow: 0 18px 50px rgba(0,0,0,.35);
-      flex: 0 0 auto;
-    }
-
-
-    .hero-about-card {
-      margin: 24px auto 0;
-      padding: 20px 24px;
-      max-width: 650px;
-      text-align: left;
-      background: rgba(18, 35, 56, 0.78);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-about-card h2 {
-      font-size: 1.25rem;
-      margin-bottom: 7px;
-    }
-
-    .hero-about-card p {
-      color: var(--muted);
-      font-size: .98rem;
-      line-height: 1.6;
-    }
-
-    .hero-content {
-      max-width: 700px;
-    }
-
-    @media (max-width: 800px) {
-      .hero-layout {
-        flex-direction: column;
-        gap: 30px;
-      }
-
-      .profile-photo {
-        width: 210px;
-        height: 210px;
-      }
-    }
-
-    .hero-content {
-      max-width: 850px;
-      text-align: center;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 8px 15px;
-      border: 1px solid rgba(66,165,255,.3);
-      border-radius: 999px;
-      color: #bfe4ff;
-      background: rgba(66,165,255,.08);
-      margin-bottom: 20px;
-      font-size: .9rem;
-    }
-
-    h1 {
-      font-size: clamp(3rem, 8vw, 6rem);
-      line-height: .98;
-      margin-bottom: 22px;
-      letter-spacing: -3px;
-    }
-
-    h1 span {
-      background: linear-gradient(90deg, var(--primary), #b18cff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero p {
-      max-width: 680px;
-      margin: auto;
-      color: var(--muted);
-      font-size: 1.12rem;
-    }
-
-    .buttons {
-      margin-top: 32px;
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 12px 21px;
-      border-radius: 10px;
-      font-weight: 700;
-      border: 1px solid var(--border);
-      transition: .25s;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border: 0;
-    }
-
-    .btn-secondary { background: rgba(255,255,255,.05); }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,.2); }
-
-    section { padding: 90px 0; }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 42px;
-    }
-
-    .section-title h2 { font-size: 2.2rem; margin-bottom: 8px; }
-    .section-title p { color: var(--muted); }
-
-    .about-card, .contact-card, .project-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-    }
-
-    .about-card {
-      padding: 34px;
-      text-align: center;
-      max-width: auto;
-      margin: auto;
-    }
-
-    .about-card p { color: var(--muted); font-size: 1.05rem; }
-
-    
-/* Navigation */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 8%;
-  background: #ffffff;
-}
-
-.logo {
-  font-size: 26px;
-  font-weight: 700;
-  color: #172554;
-  text-decoration: none;
-}
-
-.logo span {
-  color: #2563eb;
-}
-
-.nav-links {
-  display: flex;
-  gap: 28px;
-  list-style: none;
-}
-
-.nav-links a {
-  position: relative;
-  text-decoration: none;
-  color: #1e293b;
-  font-weight: 500;
-  padding-bottom: 6px;
-  transition: color 0.3s ease;
-}
-
-/* Hover underline animation */
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background: #2563eb;
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #2563eb;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-/* Projects section */
-.projects-section {
-  padding: 80px 8%;
-  background: #f8fafc;
-  scroll-margin-top: 30px;
-}
-
-.section-heading {
-  text-align: center;
-  margin-bottom: 45px;
-}
-
-.section-tag {
-  color: #2563eb;
-  font-weight: 700;
-  letter-spacing: 3px;
-  font-size: 13px;
-}
-
-.section-heading h2 {
-  font-size: 38px;
-  color: #0f172a;
-  margin: 12px 0;
-}
-
-.section-heading h2 span {
-  color: #2563eb;
-}
-
-.section-description {
-  color: #64748b;
-  font-size: 16px;
-}
-
-.projects-container {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
-  max-width: 1000px;
-  margin: auto;
-}
-
-.project-card {
-  background: #ffffff;
-  padding: 32px;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
-  transition: transform 0.3s ease, box-shadow 0.3s ease,
-              border-color 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
-  border-color: #93c5fd;
-  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.12);
-}
-
-.project-number {
-  color: #2563eb;
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 18px;
-}
-
-.project-card h3 {
-  color: #0f172a;
-  font-size: 21px;
-  margin-bottom: 14px;
-}
-
-.project-card p {
-  color: #64748b;
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-.project-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 25px;
-}
-
-.project-tech span {
-  background: #eff6ff;
-  color: #1d4ed8;
-  padding: 7px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.project-btn {
-  display: inline-block;
-  text-decoration: none;
-  background: #2563eb;
-  color: #ffffff;
-  padding: 11px 20px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: background 0.3s ease;
-}
-
-.project-btn:hover {
-  background: #1d4ed8;
-}
-
-/* Mobile responsive */
-@media (max-width: 650px) {
-  .navbar {
-    padding: 18px 5%;
-    flex-wrap: wrap;
-    gap: 18px;
-  }
-
-  .nav-links {
-    gap: 15px;
-    flex-wrap: wrap;
-    padding: 0;
-  }
-
-  .nav-links a {
-    font-size: 13px;
-  }
-
-  .projects-section {
-    padding: 55px 5%;
-  }
-
-  .section-heading h2 {
-    font-size: 30px;
-  }
-
-  .projects-container {
-    grid-template-columns: 1fr;
-  }
-
-  .project-card {
-    padding: 24px;
-  }
-}
-
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-      gap: 16px;
-    }
-
-    .skill {
-      padding: 22px 12px;
-      text-align: center;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      transition: .25s;
-    }
-
-    .skill:hover {
-      transform: translateY(-6px);
-      border-color: rgba(66,165,255,.45);
-    }
-
-    .skill i {
-      display: block;
-      font-size: 42px;
-      margin-bottom: 12px;
-    }
-
-    .skill strong { font-size: .98rem; }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 20px;
-    }
-
-    .project-card { padding: 25px; }
-    .project-card .project-icon { font-size: 32px; margin-bottom: 12px; }
-    .project-card h3 { margin-bottom: 8px; }
-    .project-card p { color: var(--muted); font-size: .95rem; }
-
-    .contact-card {
-      padding: 35px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-    }
-
-    .contact-item {
-      padding: 20px;
-      background: rgba(255,255,255,.035);
-      border-radius: 14px;
-      border: 1px solid var(--border);
-    }
-
-    .contact-item small {
-      display: block;
-      color: var(--muted);
-      margin-bottom: 5px;
-    }
-
-    .contact-item a {
-      color: #cce9ff;
-      word-break: break-word;
-    }
-
-    footer {
-      padding: 28px 0;
-      text-align: center;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-    }
-
-    .top {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      font-weight: 900;
-      opacity: 0;
-      pointer-events: none;
-      transition: .25s;
-    }
-
-    .top.show { opacity: 1; pointer-events: auto; }
-
-    @media (max-width: 700px) {
-      .nav-links { display: none; }
-      h1 { letter-spacing: -2px; }
-      .contact-card { grid-template-columns: 1fr; }
-      section { padding: 70px 0; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sudalai's portfolio - BE CSE student and aspiring Full Stack Developer.">
+    <title>Sudalai | Portfolio</title>
+
+    <style>
+        /* ===== GENERAL ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #07111f;
+            color: #f1f5ff;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section {
+            padding: 75px 0;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .underline {
+            width: 55px;
+            height: 4px;
+            background: #38a1ff;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .description {
+            color: #b7c5da;
+        }
+
+        /* ===== NAVIGATION ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: #07111f;
+            border-bottom: 1px solid #203650;
+        }
+
+        nav {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38a1ff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #c5d1e3;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38a1ff;
+        }
+
+        .github-button {
+            padding: 8px 16px;
+            border: 1px solid #38a1ff;
+            border-radius: 25px;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .github-button:hover {
+            background: #38a1ff;
+            color: #07111f;
+        }
+
+        /* ===== HOME ===== */
+        #home {
+            padding: 100px 0;
+            background: radial-gradient(
+                circle at top right,
+                #123665,
+                #07111f 55%
+            );
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.5fr 0.8fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hello {
+            color: #38a1ff;
+            font-size: 19px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 66px);
+            line-height: 1.2;
+            margin: 8px 0;
+        }
+
+        .hero h1 span {
+            color: #38a1ff;
+        }
+
+        .hero h2 {
+            font-size: 29px;
+            font-weight: normal;
+            margin-bottom: 18px;
+        }
+
+        .hero-text {
+            color: #b7c5da;
+            margin-bottom: 28px;
+            max-width: 600px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 11px 22px;
+            border-radius: 28px;
+            border: 1px solid #38a1ff;
+            transition: 0.3s;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .primary {
+            background: #38a1ff;
+            color: #07111f;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px #38a1ff30;
+        }
+
+        .profile {
+            width: 250px;
+            height: 250px;
+            margin: auto;
+            border: 2px solid #315780;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #173c68, #0d1b2e);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+            font-weight: bold;
+            color: #38a1ff;
+        }
+
+        /* ===== ABOUT ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+        }
+
+        .about-text p {
+            color: #b7c5da;
+            margin-bottom: 16px;
+        }
+
+        .details {
+            border-left: 2px solid #203650;
+            padding-left: 25px;
+        }
+
+        .detail {
+            margin-bottom: 20px;
+        }
+
+        .detail strong {
+            display: block;
+            color: #38a1ff;
+            margin-bottom: 3px;
+        }
+
+        /* ===== PROJECTS ===== */
+        #projects {
+            background: #091625;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            padding: 28px;
+            background: #0d1b2e;
+            border: 1px solid #203650;
+            border-radius: 16px;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: #38a1ff;
+        }
+
+        .project-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #142c48;
+            color: #38a1ff;
+            font-size: 27px;
+            margin-bottom: 18px;
+        }
+
+        .project-card h3 {
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: #b7c5da;
+            margin-bottom: 18px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .tag {
+            background: #172e49;
+            color: #c9e5ff;
+            padding: 4px 11px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        .project-links a {
+            color: #38a1ff;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .project-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .skill {
+            padding: 22px 10px;
+            text-align: center;
+            border: 1px solid #203650;
+            background: #0d1b2e;
+            border-radius: 13px;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-4px);
+            border-color: #38a1ff;
+        }
+
+        .skill strong {
+            display: block;
+            font-size: 22px;
+            color: #38a1ff;
+            margin-bottom: 5px;
+        }
+
+        .skill p {
+            font-size: 14px;
+        }
+
+        /* ===== CONTACT ===== */
+        #contact {
+            background: #091625;
+        }
+
+        .contact-box {
+            padding: 30px;
+            border: 1px solid #203650;
+            border-radius: 16px;
+            background: #0d1b2e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .contact-box p {
+            color: #b7c5da;
+            margin-top: 8px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            border: 1px solid #31506e;
+            padding: 9px 15px;
+            border-radius: 25px;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #38a1ff;
+            border-color: #38a1ff;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 24px 0;
+            text-align: center;
+            color: #b7c5da;
+            font-size: 13px;
+            border-top: 1px solid #203650;
+        }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 760px) {
+            nav {
+                padding: 14px 0;
+                flex-wrap: wrap;
+            }
+
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: space-between;
+                gap: 8px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .github-button {
+                font-size: 12px;
+                padding: 7px 10px;
+            }
+
+            #home {
+                padding: 65px 0;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .profile {
+                width: 190px;
+                height: 190px;
+                font-size: 75px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            section {
+                padding: 55px 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <nav>
-    <div class="container nav-inner">
-      <a class="logo" href="#home">Sudalai<span></span></a>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#projects" class="nav-projects">Projects</a></li>
 
-      </ul>
-    </div>
-  </nav>
+    <!-- NAVIGATION -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo"><span>S</span>udalai</a>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-layout">
-        <img class="profile-photo" src="sudalai-profile.png"
-             alt="Sudalai - Full Stack Developer" />
-        <div class="hero-content">
-          <div class="badge">BE CSE Studdent</div>
-          <div class="badge">Full Stack Developer</div>
-   <h1>Hey ! I'm <span>Sudalai</span></h1>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
 
-        <div class="hero-about-card">
-          <h2>About Me</h2>
-          <p>
-            Hi, I'm <strong>Sudalai</strong>, a first-year BE Computer Science and Engineering student at EASA College of Engineering and Technology. I have completed the basics of Full Stack Development and enjoy building simple, responsive web applications. I am interested in improving my programming and web development skills through practical projects. I am always interested in learning new technologies and gaining real-world experience.
-          </p>
+            <a class="github-button"
+               href="https://github.com/thirusudalai17"
+               target="_blank"
+               rel="noopener noreferrer">My GitHub ↗</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HOME SECTION -->
+        <section id="home">
+            <div class="container hero">
+                <div>
+                    <p class="hello">Hello, I'm</p>
+                    <h1><span>Su</span>dalai</h1>
+                    <h2>Full Stack Developer</h2>
+
+                    <p class="hero-text">
+                        I am a first-year BE CSE student at EASA College
+                        of Engineering and Technology. I have completed
+                        full-stack development basics and enjoy creating
+                        useful web projects. I am eager to learn new
+                        technologies, improve my skills, and gain
+                        practical development experience.
+                    </p>
+
+                    <div class="buttons">
+                        <a href="#projects" class="button primary">
+                            View Projects →
+                        </a>
+
+                        <a href="#contact" class="button">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+
+                <div class="profile" aria-label="Sudalai initial">S</div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="underline"></div>
+
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            I am Sudalai, a first-year BE Computer Science
+                            and Engineering student at EASA College of
+                            Engineering and Technology.
+                        </p>
+
+                        <p>
+                            I have learned the basics of full-stack
+                            development and am improving my skills by
+                            building small web projects.
+                        </p>
+
+                        <p>
+                            My goal is to gain practical experience,
+                            learn from real-world projects, and build
+                            a strong foundation for my future career
+                            in the IT industry.
+                        </p>
+                    </div>
+
+                    <div class="details">
+                        <div class="detail">
+                            <strong>Education</strong>
+                            BE CSE — EASA College of Engineering
+                            and Technology
+                        </div>
+
+                        <div class="detail">
+                            <strong>Specialisation</strong>
+                            Full Stack Development
+                        </div>
+
+                        <div class="detail">
+                            <strong>Currently Learning</strong>
+                            Web Development and APIs
+                        </div>
+
+                        <div class="detail">
+                            <strong>Career Goal</strong>
+                            Software Development and MNC Placement
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">My Projects</h2>
+                <div class="underline"></div>
+
+                <p class="description" style="margin-bottom: 30px;">
+                    Practical projects created to develop my web
+                    development knowledge.
+                </p>
+
+                <div class="project-grid">
+
+                    <article class="project-card">
+                        <div class="project-icon">▦</div>
+
+                        <h3>College Event Registration System</h3>
+
+                        <p>
+                            A college event website designed to present
+                            event information and provide students with
+                            an event registration interface.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="https://thirusudalai17.github.io/college_event/"
+                               target="_blank"
+                               rel="noopener noreferrer">Live Demo ↗</a>
+
+                            <a href="https://github.com/thirusudalai17"
+                               target="_blank"
+                               rel="noopener noreferrer">GitHub ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-icon">✓</div>
+
+                        <h3>To-Do List Application</h3>
+
+                        <p>
+                            A simple task management website designed
+                            to help users organise and manage daily
+                            activities through a clean interface.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="https://thirusudalai17.github.io/to-do-list/"
+                               target="_blank"
+                               rel="noopener noreferrer">Live Demo ↗</a>
+
+                            <a href="https://github.com/thirusudalai17"
+                               target="_blank"
+                               rel="noopener noreferrer">GitHub ↗</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="underline"></div>
+
+                <p class="description" style="margin-bottom: 30px;">
+                    Technologies I have studied and am currently learning.
+                </p>
+
+                <div class="skills-grid">
+                    <div class="skill">
+                        <strong>HTML5</strong>
+                        <p>HTML</p>
+                    </div>
+
+                    <div class="skill">
+                        <strong>CSS3</strong>
+                        <p>CSS</p>
+                    </div>
+
+                    <div class="skill">
+                        <strong>JS</strong>
+                        <p>JavaScript Basics</p>
+                    </div>
+
+                    <div class="skill">
+                        <strong>Py</strong>
+                        <p>Python Basics</p>
+                    </div>
+
+                    <div class="skill">
+                        <strong>C</strong>
+                        <p>C Programming</p>
+                    </div>
+
+                    <div class="skill">
+                        <strong>DB</strong>
+                        <p>Database Basics</p>
+                    </div>
+
+                    <div class="skill">
+                        <strong>API</strong>
+                        <p>Currently Learning</p>
+                    </div>
+
+                    <div class="skill">
+                        <strong>Git</strong>
+                        <p>GitHub Basics</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Let's Connect</h2>
+                <div class="underline"></div>
+
+                <div class="contact-box">
+                    <div>
+                        <h3>Interested in connecting?</h3>
+                        <p>
+                            I am eager to learn, collaborate, and
+                            improve through practical projects.
+                        </p>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://github.com/thirusudalai17"
+                           target="_blank"
+                           rel="noopener noreferrer">GitHub ↗</a>
+
+                        <a href="https://www.linkedin.com/in/sudalai17"
+                           target="_blank"
+                           rel="noopener noreferrer">LinkedIn ↗</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Sudalai | Portfolio</p>
+            <p>Designed using HTML and CSS</p>
         </div>
-        <p>
-          I build responsive, modern and user-friendly web applications
-          using front-end and back-end technologies.
-        </p>
+    </footer>
 
-        <div class="buttons">
-          <a class="btn btn-primary" href="#skills">View My Skills</a>
-          <a class="btn btn-secondary" href="#contact">Contact Me</a>
-        </div>
-      </div>
-      </div>
-    </section>
-
-<section id="projects" class="projects-section">
-  <div class="section-heading">
-    <p class="section-tag">MY WORK</p>
-    <h2>My <span>Projects</span></h2>
-    <p class="section-description">
-      Practical projects built while learning web development.
-    </p>
-  </div>
-
-  <div class="projects-container">
-
-    <!-- Project 1 -->
-    <div class="project-card">
-      <div class="project-number">01</div>
-      <h3>College Event Registration System</h3>
-      <p>
-        A web-based project designed to present college event
-        information and provide an event registration interface.
-      </p>
-      <div class="project-tech">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-      </div>
-      <a href="https://thirusudalai17.github.io/college_event/"
-         target="_blank" rel="noopener noreferrer"
-         class="project-btn">
-        View Project ↗
-      </a>
-    </div>
-
-    <!-- Project 2 -->
-    <div class="project-card">
-      <div class="project-number">02</div>
-      <h3>To-Do List Application</h3>
-      <p>
-        A simple task management application created to practice
-        web development and organize daily tasks.
-      </p>
-      <div class="project-tech">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-      </div>
-      <a href="https://thirusudalai17.github.io/to-do-list/"
-         target="_blank" rel="noopener noreferrer"
-         class="project-btn">
-        View Project ↗
-      </a>
-    </div>
-
-  </div>
-</section>
-
-
-    <section id="skills">
-      <div class="container">
-        <div class="section-title">
-          <h2>My Skills</h2>
-          <p>Technologies I work with and continue to develop.</p>
-        </div>
-
-        <div class="skills-grid">
-          <div class="skill"><i class="devicon-c-plain"></i><strong>C</strong></div>
-          <div class="skill"><i class="devicon-cplusplus-plain"></i><strong>C++</strong></div>
-          <div class="skill"><i class="devicon-python-plain"></i><strong>Python</strong></div>
-          <div class="skill"><i class="devicon-java-plain"></i><strong>Java</strong></div>
-          <div class="skill"><i class="devicon-html5-plain"></i><strong>HTML5</strong></div>
-          <div class="skill"><i class="devicon-css3-plain"></i><strong>CSS3</strong></div>
-          <div class="skill"><i class="devicon-javascript-plain"></i><strong>JavaScript</strong></div>
-          <div class="skill"><i class="devicon-bootstrap-plain"></i><strong>Bootstrap</strong></div>
-          <div class="skill"><i class="devicon-react-original"></i><strong>React</strong></div>
-          <div class="skill"><i class="devicon-mysql-plain"></i><strong>MySQL</strong></div>
-          <div class="skill"><i class="devicon-mongodb-plain"></i><strong>MongoDB</strong></div>
-          <div class="skill"><i class="devicon-django-plain"></i><strong>Django</strong></div>
-        </div>
-      </div>
-    </section>
-
-
-    <section id="contact">
-      <div class="container">
-        <div class="section-title">
-          <h2>Contact Me</h2>
-          <p>Let's connect and build something useful.</p>
-        </div>
-
-        <div class="contact-card">
-          <div class="contact-item">
-            <small>Email</small>
-            <a href="mailto:thiru.sudalai17@gmail.com">
-              thiru.sudalai17@gmail.com
-            </a>
-          </div>
-
-          <div class="contact-item">
-            <small>Phone</small>
-            <a href="tel:+919345906454">+91 93459 065454</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <a class="top" id="topBtn" href="#home" aria-label="Back to top">↑</a>
-
-  <footer>
-    <div class="container">
-      © 2026 Sudalai. Full Stack Developer.
-    </div>
-  </footer>
-
-  <script>
-    const topBtn = document.getElementById("topBtn");
-
-    window.addEventListener("scroll", () => {
-      topBtn.classList.toggle("show", window.scrollY > 500);
-    });
-  </script>
 </body>
 </html>
